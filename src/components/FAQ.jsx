@@ -1,52 +1,50 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const faqs = [
   {
     question: 'Is this a Work From Home internship?',
-    answer: 'No. This is a Work From Office opportunity.',
+    answer: 'No. This is a full-time Work From Office opportunity located at our KSR Campus headquarters.',
   },
   {
     question: 'Is this a paid internship?',
     answer:
-      'Yes. During the project deployment phase, you\'ll receive a ₹2,000 monthly support allowance for travel and food expenses. Based on your performance after probation, you may receive a performance-based internship stipend of up to ₹5,000 per month.',
+      'Yes. During the project deployment phase (Months 2 & 3), you will receive a ₹2,000 monthly support allowance to help cover travel and food expenses. Following evaluation, high performers transition to a performance-based stipend track of up to ₹5,000 per month.',
   },
   {
     question: 'Who can apply?',
     answer:
-      'Intermediate-level developers currently in their 2nd or 3rd year of Engineering.',
+      'Intermediate-level developers currently in their 2nd or 3rd year of Engineering studies.',
   },
   {
     question: 'Is prior project experience required?',
     answer:
-      'No. However, applicants should have intermediate-level development knowledge and a strong willingness to learn.',
+      'Prior corporate experience is not required. However, applicants must possess intermediate development knowledge and a strong drive to learn production workflows.',
   },
   {
     question: 'Will I work on real projects?',
     answer:
-      'Yes. Eligible interns will work on live client projects under the guidance of experienced developers.',
+      'Yes. Shortlisted interns who complete training are deployed directly onto live client systems under senior developer supervision.',
   },
   {
     question: 'Will I receive an Internship Offer Letter?',
-    answer: 'Yes.',
+    answer: 'Yes, an official corporate Internship Offer Letter is provided upon selection.',
   },
   {
     question: 'Will I receive a Certificate?',
-    answer: 'Yes, upon successful completion of the internship.',
+    answer: 'Yes, a certificate of internship completion is awarded upon successful conclusion of the program.',
   },
 ];
 
 function FAQItem({ faq, isOpen, onToggle }) {
   return (
-    <div className={`faq-item ${isOpen ? 'open' : ''}`} id={`faq-${faq.question.slice(0, 10).replace(/\s/g, '-')}`}>
-      <button className="faq-question" onClick={onToggle} aria-expanded={isOpen}>
-        <span>{faq.question}</span>
-        <svg className="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M6 9l6 6 6-6" />
-        </svg>
+    <div className={`faq-row-card ${isOpen ? 'is-expanded' : ''}`}>
+      <button className="faq-trigger-btn" onClick={onToggle} aria-expanded={isOpen}>
+        <span className="faq-question-text">{faq.question}</span>
+        <span className="faq-toggle-indicator">{isOpen ? '−' : '+'}</span>
       </button>
-      <div className="faq-answer">
-        <div className="faq-answer-inner">{faq.answer}</div>
+      <div className="faq-content-dropdown">
+        <div className="faq-content-inner-text">{faq.answer}</div>
       </div>
     </div>
   );
@@ -62,16 +60,18 @@ export default function FAQ() {
   };
 
   return (
-    <section className="section" id="faq">
+    <section className="section faq-section-redesign" id="faq">
       <div className="container">
-        <div ref={headerRef} className="faq-header reveal">
-          <span className="section-label">FAQ</span>
-          <h2 className="section-title">
-            Frequently Asked <span className="gradient-text">Questions</span>
+        {/* Section Header */}
+        <div ref={headerRef} className="reveal section-header-split">
+          <div className="section-eyebrow-accent">COMMON INQUIRIES</div>
+          <h2 className="section-title-large">
+            Frequently Asked <span className="text-highlight-accent">Questions</span>
           </h2>
         </div>
 
-        <div ref={listRef} className="faq-list reveal">
+        {/* Accordion List */}
+        <div ref={listRef} className="reveal faq-accordion-wrapper">
           {faqs.map((faq, i) => (
             <FAQItem
               key={i}

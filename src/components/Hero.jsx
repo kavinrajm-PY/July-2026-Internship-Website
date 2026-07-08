@@ -1,71 +1,95 @@
+import React from 'react';
+
 export default function Hero({ onApply }) {
   return (
-    <section className="hero" id="hero">
-      {/* Background Effects */}
-      <div className="hero-grid-bg"></div>
-      <div className="hero-orb hero-orb-1"></div>
-      <div className="hero-orb hero-orb-2"></div>
-      <div className="hero-orb hero-orb-3"></div>
+    <section className="hero-section" id="hero">
+      {/* Soft gradient blobs for a premium modern aesthetic */}
+      <div className="hero-blur-blob blob-1"></div>
+      <div className="hero-blur-blob blob-2"></div>
+      
+      <div className="container hero-grid">
+        {/* Left Column: Heading Copy */}
+        <div className="hero-left-content">
+          <div className="hero-tagline-eyebrow">
+            <span className="eyebrow-dot"></span>
+            July 2026 Internship Program
+          </div>
+          
+          <h1 className="hero-title-main">
+            Launch Your Career with <br />
+            <span className="highlight-text-gradient">Real Industry Experience</span>
+          </h1>
 
-      <div className="hero-content">
-        <div className="hero-badge">
-          <span className="hero-badge-dot"></span>
-          Paid Internship Opportunity
-        </div>
+          <p className="hero-paragraph-desc">
+            Designed for passionate 2nd and 3rd year Engineering students who are ready to work on
+            real-world software projects, learn industry practices, and gain practical
+            experience while earning a monthly allowance.
+          </p>
 
-        <h1 className="hero-title">
-          Launch Your Career with{' '}
-          <span className="highlight">Real Industry Experience</span>
-        </h1>
+          <div className="hero-meta-features">
+            <div className="meta-feature-pill">
+              <span className="meta-icon">🏢</span>
+              <span>Work From Office</span>
+            </div>
+            <div className="meta-feature-pill">
+              <span className="meta-icon">📍</span>
+              <span>KSR Campus</span>
+            </div>
+            <div className="meta-feature-pill">
+              <span className="meta-icon">⚡</span>
+              <span>Limited Positions</span>
+            </div>
+          </div>
 
-        <div className="hero-subtitle-badge">
-          For Intermediate Developers
-        </div>
-
-        <p className="hero-description">
-          Designed for passionate 2nd and 3rd year Engineering students who are ready to work on
-          real-world software projects, learn industry practices, and gain practical
-          experience while earning a monthly allowance.
-        </p>
-
-        <div className="hero-tags">
-          <span className="hero-tag">
-            <span className="hero-tag-icon">🏢</span>
-            Work From Office
-          </span>
-          <span className="hero-tag-divider"></span>
-          <span className="hero-tag">
-            <span className="hero-tag-icon">📍</span>
-            KSR Campus
-          </span>
-          <span className="hero-tag-divider"></span>
-          <span className="hero-tag">
-            <span className="hero-tag-icon">⚡</span>
-            Limited Positions
-          </span>
-        </div>
-
-        <div className="hero-cta-group">
-          <button className="btn-primary" id="hero-apply-btn" onClick={onApply}>
-            Apply Now
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </button>
-          <a href="#about">
-            <button className="btn-secondary" id="hero-learn-btn">
-              Learn More
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M6 9l6 6 6-6"/>
-              </svg>
+          <div className="hero-actions-container">
+            <button className="btn-brand-primary" onClick={onApply}>
+              Apply Now
+              <span className="btn-arrow">→</span>
             </button>
-          </a>
+            <a href="#about" className="btn-brand-secondary">
+              Explore Details
+            </a>
+          </div>
         </div>
-      </div>
 
-      <div className="hero-scroll-indicator">
-        <div className="hero-scroll-mouse"></div>
-        <span className="hero-scroll-text">Scroll</span>
+        {/* Right Column: Premium Program Card Dashboard */}
+        <div className="hero-right-visual">
+          <div className="program-highlight-card">
+            <div className="card-accent-header">
+              <span className="card-badge-status">OPEN FOR APPLICATIONS</span>
+            </div>
+            
+            <div className="program-metrics-container">
+              <div className="metric-row-item">
+                <span className="metric-icon-box">💰</span>
+                <div>
+                  <h3 className="metric-title-text">Monthly Allowance</h3>
+                  <p className="metric-detail-text">₹2,000 (Probation) to ₹5,000 (Performance Track)</p>
+                </div>
+              </div>
+
+              <div className="metric-row-item">
+                <span className="metric-icon-box">🎓</span>
+                <div>
+                  <h3 className="metric-title-text">Target Applicants</h3>
+                  <p className="metric-detail-text">2nd and 3rd Year Engineering Students</p>
+                </div>
+              </div>
+
+              <div className="metric-row-item">
+                <span className="metric-icon-box">🌍</span>
+                <div>
+                  <h3 className="metric-title-text">Global Deployment</h3>
+                  <p className="metric-detail-text">Project staging across DE, SG, and AE servers</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="program-card-footer">
+              <span className="footer-small-notice">📍 Tiruchengode, Namakkal, Tamil Nadu</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

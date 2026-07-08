@@ -1,34 +1,38 @@
+import React from 'react';
 import { useScrollReveal, useStaggerReveal } from '../hooks/useScrollReveal';
 
 export default function ProgramJourney() {
   const headerRef = useScrollReveal();
-  const timelineRef = useStaggerReveal({ staggerDelay: 200 });
+  const timelineRef = useStaggerReveal({ staggerDelay: 150 });
 
   return (
-    <section className="section section-alt" id="journey">
+    <section className="section journey-section-redesign" id="journey">
       <div className="container">
-        <div ref={headerRef} className="journey-header reveal">
-          <span className="section-label">Program Roadmap</span>
-          <h2 className="section-title">
-            Program <span className="gradient-text">Journey</span>
+        {/* Section Header */}
+        <div ref={headerRef} className="reveal section-header-split">
+          <div className="section-eyebrow-accent">ROADMAP & EVALUATION TIMELINE</div>
+          <h2 className="section-title-large">
+            Program <span className="text-highlight-accent">Journey</span>
           </h2>
-          <p className="section-subtitle" style={{ margin: '0 auto' }}>
-            Your path from trainee to industry-ready developer.
-          </p>
         </div>
 
-        <div ref={timelineRef} className="timeline">
+        {/* Roadmap Timeline */}
+        <div ref={timelineRef} className="roadmap-timeline-wrapper">
           {/* Phase 1 */}
-          <div className="timeline-item stagger-item">
-            <div className="timeline-dot phase-1">1</div>
-            <div className="timeline-card">
-              <div className="timeline-phase-label phase-1">Phase 1</div>
-              <h3 className="timeline-title">Month 1 – Training</h3>
-              <p className="timeline-desc">
-                During your first month, you'll receive structured training covering everything
-                you need to work on live projects. This phase prepares you for the real work ahead.
+          <div className="roadmap-phase-node stagger-item">
+            <div className="roadmap-meta-column">
+              <span className="phase-badge-corporate">PHASE 1</span>
+              <span className="phase-duration-tag">Month 1</span>
+            </div>
+            
+            <div className="roadmap-content-card">
+              <h3 className="phase-heading-title">Structured Developer Training</h3>
+              <p className="phase-body-desc">
+                Receive hands-on, structured guidance covering professional software development workflows 
+                and standards. This phase equips you to safely collaborate on live projects.
               </p>
-              <div className="timeline-list">
+              
+              <div className="phase-topics-tags">
                 {[
                   'Company Workflow',
                   'Development Standards',
@@ -38,8 +42,8 @@ export default function ProgramJourney() {
                   'Team Collaboration',
                   'Industry Best Practices',
                 ].map((item, i) => (
-                  <span key={i} className="timeline-list-item">
-                    <span style={{ color: 'var(--accent-indigo)' }}>▸</span> {item}
+                  <span key={i} className="topic-pill-item">
+                    {item}
                   </span>
                 ))}
               </div>
@@ -47,36 +51,41 @@ export default function ProgramJourney() {
           </div>
 
           {/* Phase 2 */}
-          <div className="timeline-item stagger-item">
-            <div className="timeline-dot phase-2">2</div>
-            <div className="timeline-card">
-              <div className="timeline-phase-label phase-2">Phase 2</div>
-              <h3 className="timeline-title">Months 2 & 3 – Project Deployment</h3>
-              <p className="timeline-desc">
-                After successfully completing the training phase, you'll be deployed into real
-                client projects. You'll work with the development team, contribute to actual
-                project deliverables, and gain hands-on industrial experience.
+          <div className="roadmap-phase-node stagger-item">
+            <div className="roadmap-meta-column">
+              <span className="phase-badge-corporate">PHASE 2</span>
+              <span className="phase-duration-tag">Months 2 & 3</span>
+            </div>
+            
+            <div className="roadmap-content-card">
+              <h3 className="phase-heading-title">Live Project Deployment</h3>
+              <p className="phase-body-desc">
+                Transition to real project tasks. Work alongside senior engineers to develop, review, 
+                and push codebase updates for international systems.
               </p>
-              <div className="timeline-stipend">
-                💰 ₹2,000 per Month
+              
+              <div className="allowance-block-details">
+                <span className="allowance-label">SUPPORT ALLOWANCE</span>
+                <span className="allowance-value">₹2,000 / Month</span>
+                <span className="allowance-purpose">Provided to support local travel and food expenses.</span>
               </div>
-              <p className="timeline-stipend-note">
-                This amount is provided as a support allowance to help cover your travel and
-                food expenses while attending the office.
-              </p>
             </div>
           </div>
 
           {/* Phase 3 */}
-          <div className="timeline-item stagger-item">
-            <div className="timeline-dot phase-3">3</div>
-            <div className="timeline-card">
-              <div className="timeline-phase-label phase-3">Phase 3</div>
-              <h3 className="timeline-title">Performance Evaluation</h3>
-              <p className="timeline-desc">
-                At the end of the probation period, your performance will be evaluated based on:
+          <div className="roadmap-phase-node stagger-item">
+            <div className="roadmap-meta-column">
+              <span className="phase-badge-corporate">PHASE 3</span>
+              <span className="phase-duration-tag">End of M3</span>
+            </div>
+            
+            <div className="roadmap-content-card">
+              <h3 className="phase-heading-title">Performance Evaluation</h3>
+              <p className="phase-body-desc">
+                Your performance will be thoroughly evaluated to determine long-term alignment across multiple vectors:
               </p>
-              <div className="timeline-list">
+
+              <div className="evaluation-indicators-grid">
                 {[
                   'Learning Ability',
                   'Technical Skills',
@@ -87,42 +96,44 @@ export default function ProgramJourney() {
                   'Professionalism',
                   'Commitment',
                 ].map((item, i) => (
-                  <span key={i} className="timeline-list-item">
-                    <span style={{ color: 'var(--accent-cyan)' }}>▸</span> {item}
-                  </span>
+                  <div key={i} className="eval-indicator-pill">
+                    <span className="eval-bullet">■</span> {item}
+                  </div>
                 ))}
               </div>
             </div>
           </div>
 
           {/* Phase 4 */}
-          <div className="timeline-item stagger-item">
-            <div className="timeline-dot phase-4">4</div>
-            <div className="timeline-card">
-              <div className="timeline-phase-label phase-4">Phase 4</div>
-              <h3 className="timeline-title">Long-Term Internship Opportunity</h3>
-              <p className="timeline-desc">
-                Based on your overall performance, you'll move into one of the following categories:
+          <div className="roadmap-phase-node stagger-item">
+            <div className="roadmap-meta-column">
+              <span className="phase-badge-corporate">PHASE 4</span>
+              <span className="phase-duration-tag">Long-Term Track</span>
+            </div>
+            
+            <div className="roadmap-content-card">
+              <h3 className="phase-heading-title">Long-Term Placement Categories</h3>
+              <p className="phase-body-desc">
+                Successful candidates move into long-term developer tracks based on their probation evaluation:
               </p>
-              <div className="performance-tiers">
-                <div className="tier-card high">
-                  <div className="tier-card-label">⭐ High Performers</div>
-                  <div className="tier-card-title">Performance-Based Internship</div>
-                  <p>
-                    Students who consistently demonstrate strong technical skills, dedication,
-                    and professionalism will be offered a Performance-Based Internship with a
-                    commitment of at least one year.
+
+              <div className="placement-categories-flex">
+                <div className="placement-card-item high-track">
+                  <div className="placement-badge">HIGH PERFORMERS</div>
+                  <h4 className="placement-title">Performance-Based SDE Intern</h4>
+                  <p className="placement-desc">
+                    Offered a long-term internship (minimum 1-year commitment) with advanced responsibilities.
                   </p>
-                  <div className="tier-stipend">Up to ₹5,000/month</div>
+                  <div className="placement-allowance-badge">Up to ₹5,000 / month</div>
                 </div>
-                <div className="tier-card developing">
-                  <div className="tier-card-label">📈 Developing Performers</div>
-                  <div className="tier-card-title">Continued Learning & Growth</div>
-                  <p>
-                    Students who require additional time to improve may continue as interns while
-                    receiving guidance and working on projects to help them grow further.
+
+                <div className="placement-card-item growth-track">
+                  <div className="placement-badge">DEVELOPING PERFORMERS</div>
+                  <h4 className="placement-title">Extended Internship & Training</h4>
+                  <p className="placement-desc">
+                    Provided additional guidance and ongoing project tasks to foster further skill growth.
                   </p>
-                  <div className="tier-stipend">₹2,000/month</div>
+                  <div className="placement-allowance-badge">₹2,000 / month</div>
                 </div>
               </div>
             </div>

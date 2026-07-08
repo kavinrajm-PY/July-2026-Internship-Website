@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
-// Google Apps Script Web App URL placeholder
-// The user can replace this with their actual deployed web app URL
+// Deployed Google Apps Script Web App URL from the user
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxQitFnQIn7CIpGq3uSYIYMpcxUJ1YaQsOCzA_FSvi55phw15S-jjIJv3OwYzZtQD6b/exec';
 
 export default function ApplicationForm({ onBack }) {
@@ -36,7 +35,6 @@ export default function ApplicationForm({ onBack }) {
       ...prev,
       [name]: type === 'checkbox' ? checked : value,
     }));
-    // Clear validation error when user types
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: '' }));
     }
@@ -46,21 +44,18 @@ export default function ApplicationForm({ onBack }) {
     const file = e.target.files[0];
     if (!file) return;
 
-    // Validate file type
     if (file.type !== 'application/pdf') {
       setErrors((prev) => ({ ...prev, resume: 'Please upload a PDF file only.' }));
       return;
     }
 
-    // Validate file size (10 MB limit)
     if (file.size > 10 * 1024 * 1024) {
       setErrors((prev) => ({ ...prev, resume: 'File size must be less than 10MB.' }));
       return;
     }
 
     setErrors((prev) => ({ ...prev, resume: '' }));
-
-    // Read file as Base64 string
+    
     const reader = new FileReader();
     reader.onload = () => {
       const base64String = reader.result.split(',')[1];
@@ -124,24 +119,10 @@ export default function ApplicationForm({ onBack }) {
 
     setIsSubmitting(true);
 
-    // If Script URL is placeholder, prompt instructions
-    if (GOOGLE_SCRIPT_URL.includes('YOUR_GOOGLE_APPS_SCRIPT_URL')) {
-      alert(
-        "Application Form Replicated Successfully!\n\nTo save submissions directly to your Google Sheets, please configure your deployed Google Apps Script Web App URL in c:\\Users\\pocok\\OneDrive\\Desktop\\Praskla\\HR\\July 2026 intern\\Internship form page\\src\\components\\ApplicationForm.jsx"
-      );
-      // Simulate successful submission for preview purposes
-      setTimeout(() => {
-        setIsSubmitting(false);
-        setSubmitSuccess(true);
-        window.scrollTo(0, 0);
-      }, 1000);
-      return;
-    }
-
     try {
       const response = await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
-        mode: 'no-cors', // standard way to post to Apps Script without CORS errors
+        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -177,19 +158,19 @@ export default function ApplicationForm({ onBack }) {
 
   if (submitSuccess) {
     return (
-      <section className="section form-section" style={{ minHeight: '80vh', display: 'flex', alignItems: 'center' }}>
+      <section className="section form-section" style={{ minHeight: '85vh', display: 'flex', alignItems: 'center' }}>
         <div className="container" style={{ maxWidth: '600px', textAlign: 'center' }}>
           <div className="success-icon-wrapper">✓</div>
-          <h2 className="section-title">Application Submitted!</h2>
+          <h2 className="section-title-large" style={{ marginBottom: '16px' }}>Application Submitted!</h2>
           <p className="success-message">
             Thank you for applying to the Praskla Technology SDE Internship Program.
-            Your information has been successfully saved to our database.
+            Your application has been logged directly to our Google Sheets portal.
           </p>
-          <p className="success-submessage">
-            Our team will review your application and get in touch with you if you are shortlisted.
+          <p className="success-submessage" style={{ margin: '16px 0 32px', color: '#666' }}>
+            We will carefully review your details and resume. Shortlisted candidates will be contacted via email or mobile.
           </p>
-          <button className="btn-primary" onClick={onBack} style={{ marginTop: '24px' }}>
-            Back to Home
+          <button className="btn-brand-primary" onClick={onBack}>
+            Back to Home Page
           </button>
         </div>
       </section>
@@ -199,26 +180,33 @@ export default function ApplicationForm({ onBack }) {
   return (
     <section className="section form-section">
       <div className="container" style={{ maxWidth: '700px' }}>
-        {/* Back Button */}
+        {/* Back Link */}
         <button className="back-link-btn" onClick={onBack}>
           ← Back to Internship Details
         </button>
 
         <div className="form-card">
           <div className="form-card-header">
+            <span className="section-eyebrow-accent">CANDIDATE REGISTRATION</span>
             <h2 className="form-title">Student Registration Form</h2>
             <p className="form-subtitle-text">
-              Please fill in the details carefully and be honest. The information provided
-              will be used for the shortlisting process.
+              Please fill in all details carefully. The information provided will be used 
+              to assess your technical skills and project placement compatibility.
             </p>
-
-            {/* Progress Bar */}
+            
+            {/* Design-rich Stepper Progress Bar */}
             <div className="progress-steps-bar">
-              <div className={`step-indicator ${currentStep >= 1 ? 'active' : ''}`}>1. Personal</div>
+              <div className={`step-indicator ${currentStep >= 1 ? 'active' : ''}`}>
+                <span className="step-num-icon">1</span> Personal Details
+              </div>
               <div className={`step-line ${currentStep >= 2 ? 'active' : ''}`}></div>
-              <div className={`step-indicator ${currentStep >= 2 ? 'active' : ''}`}>2. Academic</div>
+              <div className={`step-indicator ${currentStep >= 2 ? 'active' : ''}`}>
+                <span className="step-num-icon">2</span> Academic & Skills
+              </div>
               <div className={`step-line ${currentStep >= 3 ? 'active' : ''}`}></div>
-              <div className={`step-indicator ${currentStep >= 3 ? 'active' : ''}`}>3. Motivation & PDF</div>
+              <div className={`step-indicator ${currentStep >= 3 ? 'active' : ''}`}>
+                <span className="step-num-icon">3</span> Commitment & PDF
+              </div>
             </div>
           </div>
 
@@ -226,8 +214,8 @@ export default function ApplicationForm({ onBack }) {
             {/* STEP 1: Personal Information */}
             {currentStep === 1 && (
               <div className="form-step-content">
-                <h3 className="step-title">Personal Information</h3>
-
+                <h3 className="step-title">Personal Details</h3>
+                
                 {/* 1. Full Name */}
                 <div className="form-group">
                   <label htmlFor="fullName" className="required-label">Full Name</label>
@@ -265,7 +253,7 @@ export default function ApplicationForm({ onBack }) {
                     type="tel"
                     id="mobileNumber"
                     name="mobileNumber"
-                    placeholder="Enter your contact number"
+                    placeholder="Enter your mobile contact number"
                     value={formData.mobileNumber}
                     onChange={handleInputChange}
                     className={errors.mobileNumber ? 'error-input' : ''}
@@ -274,7 +262,7 @@ export default function ApplicationForm({ onBack }) {
                 </div>
 
                 <div className="form-footer-actions">
-                  <button type="button" className="btn-primary" onClick={handleNext}>
+                  <button type="button" className="btn-brand-primary" onClick={handleNext}>
                     Next Step →
                   </button>
                 </div>
@@ -284,7 +272,7 @@ export default function ApplicationForm({ onBack }) {
             {/* STEP 2: Academic & Technical Information */}
             {currentStep === 2 && (
               <div className="form-step-content">
-                <h3 className="step-title">Academic & Technical Details</h3>
+                <h3 className="step-title">Academics & Technical Details</h3>
 
                 {/* 4. College Name */}
                 <div className="form-group">
@@ -293,7 +281,7 @@ export default function ApplicationForm({ onBack }) {
                     type="text"
                     id="collegeName"
                     name="collegeName"
-                    placeholder="Enter your college name"
+                    placeholder="Enter your college/university name"
                     value={formData.collegeName}
                     onChange={handleInputChange}
                     className={errors.collegeName ? 'error-input' : ''}
@@ -329,7 +317,7 @@ export default function ApplicationForm({ onBack }) {
                           checked={formData.yearOfStudy === year}
                           onChange={handleInputChange}
                         />
-                        <span>{year}</span>
+                        <span className="radio-dot-text">{year}</span>
                       </label>
                     ))}
                   </div>
@@ -364,7 +352,7 @@ export default function ApplicationForm({ onBack }) {
                           checked={formData.testingKnowledge === opt}
                           onChange={handleInputChange}
                         />
-                        <span>{opt}</span>
+                        <span className="radio-dot-text">{opt}</span>
                       </label>
                     ))}
                   </div>
@@ -398,10 +386,10 @@ export default function ApplicationForm({ onBack }) {
                 </div>
 
                 <div className="form-footer-actions dual">
-                  <button type="button" className="btn-secondary" onClick={handlePrev}>
+                  <button type="button" className="btn-brand-secondary" onClick={handlePrev}>
                     ← Back
                   </button>
-                  <button type="button" className="btn-primary" onClick={handleNext}>
+                  <button type="button" className="btn-brand-primary" onClick={handleNext}>
                     Next Step →
                   </button>
                 </div>
@@ -441,7 +429,7 @@ export default function ApplicationForm({ onBack }) {
                           checked={formData.officeWillingness === opt}
                           onChange={handleInputChange}
                         />
-                        <span>{opt}</span>
+                        <span className="radio-dot-text">{opt}</span>
                       </label>
                     ))}
                   </div>
@@ -466,7 +454,7 @@ export default function ApplicationForm({ onBack }) {
                           checked={formData.internshipDuration === opt}
                           onChange={handleInputChange}
                         />
-                        <span>{opt}</span>
+                        <span className="radio-dot-text">{opt}</span>
                       </label>
                     ))}
                   </div>
@@ -485,11 +473,11 @@ export default function ApplicationForm({ onBack }) {
                       style={{ display: 'none' }}
                     />
                     <label htmlFor="resume" className="file-upload-label-box">
-                      <span className="upload-icon">📁</span>
+                      <span className="upload-icon">📄</span>
                       <span className="upload-text">
                         {formData.resumeFile ? formData.resumeFile.name : 'Click to Upload Resume (PDF)'}
                       </span>
-                      <span className="upload-subtext">Max size: 10MB</span>
+                      <span className="upload-subtext">Maximum File Size: 10 MB</span>
                     </label>
                   </div>
                   {errors.resume && <span className="error-text">{errors.resume}</span>}
@@ -512,10 +500,10 @@ export default function ApplicationForm({ onBack }) {
                 </div>
 
                 <div className="form-footer-actions dual">
-                  <button type="button" className="btn-secondary" onClick={handlePrev} disabled={isSubmitting}>
+                  <button type="button" className="btn-brand-secondary" onClick={handlePrev} disabled={isSubmitting}>
                     ← Back
                   </button>
-                  <button type="submit" className="btn-primary" disabled={isSubmitting}>
+                  <button type="submit" className="btn-brand-primary" disabled={isSubmitting}>
                     {isSubmitting ? 'Submitting Application...' : 'Submit Application'}
                   </button>
                 </div>

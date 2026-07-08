@@ -1,42 +1,51 @@
+import React from 'react';
 import { useScrollReveal, useStaggerReveal } from '../hooks/useScrollReveal';
 
 const countries = [
-  { flag: '🇩🇪', name: 'Germany' },
-  { flag: '🇸🇬', name: 'Singapore' },
-  { flag: '🇦🇪', name: 'Dubai' },
-  { flag: '🇮🇳', name: 'India' },
+  { flag: '🇩🇪', name: 'Germany', code: 'DE / EU' },
+  { flag: '🇸🇬', name: 'Singapore', code: 'SG / APAC' },
+  { flag: '🇦🇪', name: 'Dubai', code: 'AE / ME' },
+  { flag: '🇮🇳', name: 'India', code: 'IN / SA' },
 ];
 
 export default function GlobalExposure() {
   const headerRef = useScrollReveal();
-  const gridRef = useStaggerReveal({ staggerDelay: 120 });
+  const gridRef = useStaggerReveal({ staggerDelay: 100 });
   const footerRef = useScrollReveal();
 
   return (
-    <section className="section" id="global">
+    <section className="section global-exposure-section-redesign" id="global">
       <div className="container">
-        <div ref={headerRef} className="global-header reveal">
-          <span className="section-label">🌐 Global Reach</span>
-          <h2 className="section-title">
-            Global Project <span className="gradient-text">Exposure</span>
+        {/* Section Header */}
+        <div ref={headerRef} className="reveal section-header-split">
+          <div className="section-eyebrow-accent">GLOBAL STAGING SERVERS</div>
+          <h2 className="section-title-large">
+            Global Project <span className="text-highlight-accent">Exposure</span>
           </h2>
-          <p className="section-subtitle" style={{ margin: '0 auto' }}>
-            You'll have the opportunity to work on projects serving clients across multiple regions.
-          </p>
         </div>
 
-        <div ref={gridRef} className="countries-grid">
+        {/* Global Cards Grid */}
+        <div ref={gridRef} className="global-redesign-grid">
           {countries.map((country, i) => (
-            <div key={i} className="country-card stagger-item">
-              <span className="country-flag">{country.flag}</span>
-              <div className="country-name">{country.name}</div>
+            <div key={i} className="global-country-row stagger-item">
+              <span className="global-flag-icon">{country.flag}</span>
+              <div className="global-country-details">
+                <div className="global-country-name">{country.name}</div>
+                <div className="global-country-code">{country.code}</div>
+              </div>
             </div>
           ))}
         </div>
 
-        <div ref={footerRef} className="global-footer-text reveal">
-          This experience helps you build a professional portfolio and gives you valuable
-          real-world stories to discuss during future job interviews.
+        {/* Descriptive Footer Info */}
+        <div ref={footerRef} className="reveal global-exposure-footer-card">
+          <div className="footer-card-inner">
+            <span className="info-badge-corporate">PORTFOLIO IMPACT</span>
+            <p className="impact-text">
+              Working on code deployed to international servers equips you with real-world project stories 
+              and technical credentials that will distinguish your profile during competitive SDE placement interviews.
+            </p>
+          </div>
         </div>
       </div>
     </section>

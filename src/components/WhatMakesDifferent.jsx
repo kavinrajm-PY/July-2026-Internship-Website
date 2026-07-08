@@ -1,47 +1,53 @@
+import React from 'react';
 import { useScrollReveal, useStaggerReveal } from '../hooks/useScrollReveal';
 
 const features = [
-  { icon: '📐', text: 'Learn Industry Standards' },
-  { icon: '🏗️', text: 'Build Production-Level Applications' },
-  { icon: '🤝', text: 'Work with Real Clients' },
-  { icon: '⚙️', text: 'Experience Professional Development Workflows' },
-  { icon: '👨‍💻', text: 'Collaborate with Experienced Developers' },
-  { icon: '📄', text: 'Build an Impressive Resume' },
-  { icon: '💼', text: 'Strengthen Your Technical Portfolio' },
-  { icon: '🎤', text: 'Gain Interview-Worthy Project Experience' },
+  { icon: '✓', text: 'Learn Professional Industry Standards' },
+  { icon: '✓', text: 'Build Production-Level Applications' },
+  { icon: '✓', text: 'Work with Real Global Clients' },
+  { icon: '✓', text: 'Experience Professional Development Workflows' },
+  { icon: '✓', text: 'Collaborate with Experienced Developers' },
+  { icon: '✓', text: 'Build an Impressive Technical Resume' },
+  { icon: '✓', text: 'Strengthen Your Software Engineering Portfolio' },
+  { icon: '✓', text: 'Gain Genuine Interview-Worthy Project Experience' },
 ];
 
 export default function WhatMakesDifferent() {
   const headerRef = useScrollReveal();
-  const gridRef = useStaggerReveal({ staggerDelay: 80 });
+  const gridRef = useStaggerReveal({ staggerDelay: 60 });
   const footerRef = useScrollReveal();
 
   return (
-    <section className="section" id="different">
+    <section className="section different-section-redesign" id="different">
       <div className="container">
-        <div ref={headerRef} className="different-header reveal">
-          <span className="section-label">Stand Out</span>
-          <h2 className="section-title">
-            What Makes This Opportunity <span className="gradient-text">Different?</span>
+        {/* Section Header */}
+        <div ref={headerRef} className="reveal section-header-split">
+          <div className="section-eyebrow-accent">VALUE COMPARISON</div>
+          <h2 className="section-title-large">
+            What Makes This Opportunity <span className="text-highlight-accent">Different?</span>
           </h2>
-          <p className="section-subtitle" style={{ margin: '0 auto' }}>
-            Most internships focus only on training. Here, you will:
+          <p className="subtitle-description-text">
+            Traditional internships focus primarily on observation. Here, you will actively build.
           </p>
         </div>
 
-        <div ref={gridRef} className="different-grid">
+        {/* Feature Check List Grid */}
+        <div ref={gridRef} className="different-checklist-grid">
           {features.map((item, i) => (
-            <div key={i} className="different-item stagger-item">
-              <div className="different-item-icon">{item.icon}</div>
-              <div className="different-item-text">{item.text}</div>
+            <div key={i} className="checklist-row-item stagger-item">
+              <span className="checklist-check-icon">{item.icon}</span>
+              <span className="checklist-text-label">{item.text}</span>
             </div>
           ))}
         </div>
 
-        <div ref={footerRef} className="different-footer reveal">
-          By the end of your internship, you'll have <strong style={{ color: 'var(--text-primary)' }}>
-          practical experience</strong> that helps you confidently discuss real software projects
-          during placement interviews.
+        {/* Summary Footer */}
+        <div ref={footerRef} className="reveal different-summary-card">
+          <p className="summary-card-text">
+            By the end of your internship, you will possess the practical engineering experience 
+            needed to confidently explain and defend real-world software architecture choices 
+            during future placement interviews.
+          </p>
         </div>
       </div>
     </section>

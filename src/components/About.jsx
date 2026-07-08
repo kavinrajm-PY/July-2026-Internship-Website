@@ -1,77 +1,75 @@
+import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function About() {
   const headerRef = useScrollReveal();
-  const contentRef = useScrollReveal({ threshold: 0.05 });
-  const cardsRef = useScrollReveal({ threshold: 0.05 });
+  const noticeRef = useScrollReveal({ threshold: 0.05 });
+  const textRef = useScrollReveal({ threshold: 0.05 });
 
   return (
-    <section className="section section-alt" id="about">
+    <section className="section about-section-redesign" id="about">
       <div className="container">
-        <div ref={headerRef} className="reveal">
-          <span className="section-label">About the Program</span>
-          <h2 className="section-title">
-            What is this <span className="gradient-text">Program?</span>
+        {/* Section Header */}
+        <div ref={headerRef} className="reveal section-header-split">
+          <div className="section-eyebrow-accent">ABOUT THE PROGRAM</div>
+          <h2 className="section-title-large">
+            What is this <span className="text-highlight-accent">Program?</span>
           </h2>
         </div>
 
-        <div className="about-content">
-          <div ref={contentRef} className="about-text reveal">
-            <div className="about-notice">
-              <div className="about-notice-title">
-                <span>⚠️</span> Important Notice
-              </div>
-              <p>
-                This is an internship opportunity only. This is <strong>not</strong> a hiring,
-                recruitment, or placement process.
+        {/* 2-Column Content Grid */}
+        <div className="about-grid-content">
+          {/* Left Column: Warning and Main Purpose */}
+          <div ref={noticeRef} className="reveal about-left-col">
+            <div className="attention-card-warning">
+              <div className="warning-eyebrow">IMPORTANT STATEMENT</div>
+              <p className="warning-body-text">
+                This is an internship opportunity only. This is not a hiring, recruitment,
+                or placement process.
               </p>
             </div>
 
-            <p>
-              This is not a conventional internship focused on observation or basic tasks.
-              It is an <strong>industry-oriented development program</strong> designed for students
-              who already possess intermediate-level development skills and are eager to gain
-              real project experience.
-            </p>
-
-            <p>
-              You will work alongside experienced developers, understand professional software
-              development workflows, and contribute to live projects used by international clients.
-            </p>
-
-            <p>
-              Throughout the program, you'll learn how software companies operate, collaborate
-              in teams, follow development standards, and deliver production-ready solutions.
-            </p>
+            <h3 className="about-subtitle-tech">
+              Bespoke industry-oriented training to bridge the gap between college and the corporate world.
+            </h3>
           </div>
 
-          <div ref={cardsRef} className="about-highlights reveal">
-            <div className="about-highlight-card">
-              <div className="about-highlight-icon purple">💻</div>
-              <div>
-                <div className="about-highlight-title">Real Project Experience</div>
-                <div className="about-highlight-desc">
-                  Work on live client projects alongside experienced developers, not mock exercises.
+          {/* Right Column: Detailed Explanation */}
+          <div ref={textRef} className="reveal about-right-col">
+            <p className="about-lead-paragraph">
+              This is not a conventional internship focused on observation or basic administrative tasks. 
+              It is an intensive, development-driven program designed specifically for students who already possess 
+              intermediate-level development skills and are eager to gain genuine, hands-on project exposure.
+            </p>
+
+            <div className="about-features-vertical">
+              <div className="about-feature-item-row">
+                <span className="feature-number">1</span>
+                <div>
+                  <h4 className="feature-title-bold">Professional Team Workflows</h4>
+                  <p className="feature-desc-text">
+                    Understand how code gets tested, reviewed, and integrated in modern SDE environments.
+                  </p>
                 </div>
               </div>
-            </div>
 
-            <div className="about-highlight-card">
-              <div className="about-highlight-icon cyan">🌐</div>
-              <div>
-                <div className="about-highlight-title">International Clients</div>
-                <div className="about-highlight-desc">
-                  Contribute to projects used by clients across Germany, Singapore, Dubai, and India.
+              <div className="about-feature-item-row">
+                <span className="feature-number">2</span>
+                <div>
+                  <h4 className="feature-title-bold">Contribution to Live Systems</h4>
+                  <p className="feature-desc-text">
+                    Work alongside seasoned engineering veterans to deliver features that serve international clients.
+                  </p>
                 </div>
               </div>
-            </div>
 
-            <div className="about-highlight-card">
-              <div className="about-highlight-icon emerald">📈</div>
-              <div>
-                <div className="about-highlight-title">Professional Growth</div>
-                <div className="about-highlight-desc">
-                  Learn industry standards, code reviews, agile development, and production workflows.
+              <div className="about-feature-item-row">
+                <span className="feature-number">3</span>
+                <div>
+                  <h4 className="feature-title-bold">Standard Coding Practices</h4>
+                  <p className="feature-desc-text">
+                    Learn to write production-grade, maintainable code following structured enterprise styling and lint rules.
+                  </p>
                 </div>
               </div>
             </div>

@@ -1,30 +1,35 @@
+import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function OfficeLocation() {
   const ref = useScrollReveal();
 
   return (
-    <section className="section" id="location">
+    <section className="section office-location-section-redesign" id="location">
       <div className="container">
-        <div ref={ref} className="reveal">
-          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <span className="section-label">📍 Location</span>
-            <h2 className="section-title">
-              Office <span className="gradient-text">Location</span>
-            </h2>
-          </div>
-
-          <div className="location-card">
-            <span className="location-pin">🏢</span>
-            <div className="location-title">Praskla Technology</div>
-            <div className="location-subtitle">
-              3rd Floor, A Block, KSRCE College,<br />
-              KSR Campus, Tiruchengode,<br />
-              Namakkal, Tamil Nadu - 637 215, India
+        {/* Section Header */}
+        <div ref={ref} className="reveal location-card-wrapper">
+          <div className="section-eyebrow-accent">COMPANY HEADQUARTERS</div>
+          <h2 className="section-title-large">
+            Office <span className="text-highlight-accent">Location</span>
+          </h2>
+          
+          <div className="hq-details-card">
+            <div className="hq-card-top">
+              <span className="hq-marker-icon">📍</span>
+              <div>
+                <h3 className="hq-company-title">Praskla Technology</h3>
+                <p className="hq-address-line">
+                  3rd Floor, A Block, KSRCE College,<br />
+                  KSR Campus, Tiruchengode,<br />
+                  Namakkal, Tamil Nadu - 637 215, India
+                </p>
+              </div>
             </div>
-            <div className="location-badge">
-              <span>💼</span>
-              Full Work-From-Office Opportunity
+            
+            <div className="hq-card-bottom-tag">
+              <span className="hq-badge-label">OFFLINE INTERNSHIP</span>
+              <p className="hq-badge-desc">This is a full work-from-office SDE opportunity.</p>
             </div>
           </div>
         </div>

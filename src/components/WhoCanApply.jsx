@@ -1,80 +1,73 @@
+import React from 'react';
 import { useScrollReveal, useStaggerReveal } from '../hooks/useScrollReveal';
 
 const eligibilityCriteria = [
-  { icon: '🎓', text: '2nd or 3rd Year Engineering Students' },
-  { icon: '⚡', text: 'Intermediate-level Developers' },
-  { icon: '🔥', text: 'Passionate about Software Development' },
-  { icon: '🏢', text: 'Ready to Work from Office' },
-  { icon: '🎯', text: 'Willing to Commit for Long-Term Growth' },
+  { term: 'Current Education', detail: '2nd or 3rd Year Engineering Students' },
+  { term: 'Coding Level', detail: 'Intermediate-level Developers' },
+  { term: 'Motivation', detail: 'Passionate about Software Development' },
+  { term: 'Work Environment', detail: 'Ready to Work from Office' },
+  { term: 'Commitment Term', detail: 'Willing to commit for long-term growth' },
 ];
 
 const skills = [
-  { text: 'Intermediate-level development skills', bonus: false },
-  { text: 'Basic understanding of programming fundamentals', bonus: false },
-  { text: 'Passion for learning and building real-world applications', bonus: false },
-  { text: 'Testing knowledge is an added advantage', bonus: true },
+  { text: 'Intermediate-level development skills', status: 'Core Requirement' },
+  { text: 'Basic understanding of programming fundamentals', status: 'Core Requirement' },
+  { text: 'Passion for learning and building real-world applications', status: 'Core Requirement' },
+  { text: 'Testing knowledge is an added advantage', status: 'Preferred Skill' },
 ];
 
 export default function WhoCanApply() {
   const headerRef = useScrollReveal();
-  const gridRef = useStaggerReveal({ staggerDelay: 80 });
+  const criteriaRef = useStaggerReveal({ staggerDelay: 80 });
   const skillsRef = useScrollReveal();
 
   return (
-    <section className="section" id="eligibility">
+    <section className="section eligibility-section-redesign" id="eligibility">
       <div className="container">
-        <div ref={headerRef} className="reveal" style={{ textAlign: 'center', marginBottom: '48px' }}>
-          <span className="section-label">Eligibility</span>
-          <h2 className="section-title">
-            Who Can <span className="gradient-text">Apply?</span>
+        {/* Section Header */}
+        <div ref={headerRef} className="reveal section-header-split">
+          <div className="section-eyebrow-accent">CANDIDATE ELIGIBILITY</div>
+          <h2 className="section-title-large">
+            Who Can <span className="text-highlight-accent">Apply?</span>
           </h2>
-          <p className="section-subtitle" style={{ margin: '0 auto' }}>
-            We are looking for students who are:
-          </p>
         </div>
 
-        <div ref={gridRef} className="eligibility-grid">
-          {eligibilityCriteria.map((item, i) => (
-            <div key={i} className="eligibility-card stagger-item">
-              <div className="eligibility-card-icon">{item.icon}</div>
-              <div className="eligibility-card-text">{item.text}</div>
-            </div>
-          ))}
-        </div>
-
-        <div ref={skillsRef} className="reveal">
-          <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-            <h3 className="section-title" style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}>
-              Preferred <span className="gradient-text">Skills</span>
-            </h3>
-            <p className="section-subtitle" style={{ margin: '0 auto' }}>
-              We welcome candidates with intermediate-level skills in any area relevant to a
-              Software Development Engineer (SDE) Intern role, including web development,
-              mobile app development, software development, cloud technologies, and other
-              software engineering domains.
-            </p>
-          </div>
-
-          <div className="skills-section">
-            <div className="skills-list">
-              {skills.map((skill, i) => (
-                <div key={i} className={`skill-item ${skill.bonus ? 'bonus' : ''}`}>
-                  <div className="skill-check">✓</div>
-                  <span>{skill.text}</span>
+        {/* 2-Column Main Layout */}
+        <div className="eligibility-grid-layout">
+          {/* Left Column: Criteria Table */}
+          <div className="eligibility-left-table">
+            <h3 className="sub-title-corporate">ELIGIBILITY DETAILS</h3>
+            
+            <div ref={criteriaRef} className="criteria-table-container">
+              {eligibilityCriteria.map((item, i) => (
+                <div key={i} className="criteria-row-item stagger-item">
+                  <div className="criteria-term">{item.term}</div>
+                  <div className="criteria-detail">{item.detail}</div>
                 </div>
               ))}
             </div>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <div className="skills-intro">
-                <p style={{ marginBottom: '16px' }}>
-                  We are not looking for complete beginners. We are looking for{' '}
-                  <strong style={{ color: 'var(--text-primary)' }}>motivated learners</strong> who already have a solid foundation and are ready to grow.
-                </p>
-                <p>
-                  If you can write clean code, understand basic data structures, and are excited
-                  about building real software — you're exactly who we're looking for.
-                </p>
-              </div>
+          </div>
+
+          {/* Right Column: Preferred Skills Checklist */}
+          <div ref={skillsRef} className="reveal eligibility-right-skills">
+            <h3 className="sub-title-corporate">PREFERRED MINDSET & SKILLS</h3>
+            
+            <div className="skills-checklist-wrapper">
+              {skills.map((skill, i) => (
+                <div key={i} className={`skill-check-card ${skill.status === 'Preferred Skill' ? 'preferred' : 'required'}`}>
+                  <div className="skill-meta-label">
+                    <span className="meta-badge">{skill.status}</span>
+                  </div>
+                  <p className="skill-main-text">{skill.text}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="skills-warning-footer">
+              <p>
+                <strong>We are not looking for complete beginners.</strong> We are looking for motivated learners 
+                who already have a solid foundation and are ready to grow.
+              </p>
             </div>
           </div>
         </div>
