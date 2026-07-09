@@ -93,7 +93,6 @@ ol {
   padding: var(--section-py) 0;
   position: relative;
   background-color: var(--color-bg-light);
-  border-bottom: 1px solid var(--color-gray-light);
 }
 
 /* Precise alternate sections for balanced aesthetics */
@@ -2372,45 +2371,39 @@ ol {
 }
 
 .icon-pos-1 {
-  top: 12%;
-  left: 8%;
+  top: 15%;
+  left: 7%;
   animation: floatSlow-1 12s infinite ease-in-out;
 }
 
 .icon-pos-2 {
-  top: 22%;
+  top: 20%;
   right: 7%;
   animation: floatSlow-2 15s infinite ease-in-out;
 }
 
 .icon-pos-3 {
-  top: 34%;
+  top: 45%;
   left: 6%;
   animation: floatSlow-3 14s infinite ease-in-out;
 }
 
 .icon-pos-4 {
-  top: 48%;
-  right: 9%;
+  top: 50%;
+  right: 8%;
   animation: floatSlow-1 18s infinite ease-in-out;
 }
 
 .icon-pos-5 {
-  top: 62%;
-  left: 8%;
+  top: 75%;
+  left: 7%;
   animation: floatSlow-2 16s infinite ease-in-out;
 }
 
 .icon-pos-6 {
-  top: 76%;
-  right: 6%;
+  top: 80%;
+  right: 7%;
   animation: floatSlow-3 13s infinite ease-in-out;
-}
-
-.icon-pos-7 {
-  top: 88%;
-  left: 10%;
-  animation: floatSlow-1 17s infinite ease-in-out;
 }
 
 /* ============================================

@@ -54,15 +54,6 @@ export default function FloatingIcons() {
         </svg>
       </div>
 
-      {/* Icon 7: Box / Package */}
-      <div className="floating-icon icon-pos-7">
-        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
-          <polygon points="12 22.08 12 12 3 6.92 3 17.08 12 22.08"></polygon>
-          <polygon points="12 22.08 21 17.08 21 6.92 12 12 12 22.08"></polygon>
-          <polygon points="12 12 21 6.92 12 1.84 3 6.92 12 12"></polygon>
-        </svg>
-      </div>
     </div>
   );
 }

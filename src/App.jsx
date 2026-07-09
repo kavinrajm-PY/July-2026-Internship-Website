@@ -36,27 +36,16 @@ export default function App() {
       {view === 'landing' ? (
         <main>
           <Hero onApply={navigateToApply} />
-          <hr className="section-divider" />
           <About />
-          <hr className="section-divider" />
           <WhoCanApply />
-          <hr className="section-divider" />
           <WhyJoin />
-          <hr className="section-divider" />
           <GlobalExposure />
-          <hr className="section-divider" />
           <ProgramJourney />
-          <hr className="section-divider" />
           <WhatMakesDifferent />
-          <hr className="section-divider" />
           <Commitment />
-          <hr className="section-divider" />
           <OfficeLocation />
-          <hr className="section-divider" />
           <WhoWillSucceed />
-          <hr className="section-divider" />
           <FAQ />
-          <hr className="section-divider" />
           <FinalCTA onApply={navigateToApply} />
         </main>
       ) : (
