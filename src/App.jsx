@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -18,6 +18,7 @@ import ApplicationForm from './components/ApplicationForm';
 
 export default function App() {
   const [view, setView] = useState('landing'); // 'landing' or 'apply'
+  const [scrollTarget, setScrollTarget] = useState(null);
 
   const navigateToApply = () => {
     setView('apply');
@@ -28,6 +29,39 @@ export default function App() {
     setView('landing');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const navigateToSection = (targetId) => {
+    if (view !== 'landing') {
+      setView('landing');
+      setScrollTarget(targetId);
+    } else {
+      if (targetId === 'hero') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (view === 'landing' && scrollTarget) {
+      const timer = setTimeout(() => {
+        if (scrollTarget === 'hero') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          const element = document.getElementById(scrollTarget);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+        setScrollTarget(null);
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [view, scrollTarget]);
 
   return (
     <>
@@ -51,7 +85,7 @@ export default function App() {
       ) : (
         <ApplicationForm onBack={navigateToHome} />
       )}
-      <Footer onHome={navigateToHome} />
+      <Footer onNavigate={navigateToSection} />
     </>
   );
 }

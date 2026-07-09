@@ -1,7 +1,14 @@
 import React from 'react';
 
-export default function Footer() {
+export default function Footer({ onNavigate }) {
   const currentYear = new Date().getFullYear();
+
+  const handleLinkClick = (e, targetId) => {
+    if (onNavigate) {
+      e.preventDefault();
+      onNavigate(targetId);
+    }
+  };
 
   return (
     <footer className="main-footer">
@@ -45,13 +52,13 @@ export default function Footer() {
         <div className="footer-col">
           <h4 className="footer-col-title">Quick Links</h4>
           <ul className="footer-links-list">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#eligibility">Who Can Apply</a></li>
-            <li><a href="#benefits">Why Join</a></li>
-            <li><a href="#journey">Program Journey</a></li>
-            <li><a href="#location">Office Location</a></li>
-            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#hero" onClick={(e) => handleLinkClick(e, 'hero')}>Home</a></li>
+            <li><a href="#about" onClick={(e) => handleLinkClick(e, 'about')}>About Us</a></li>
+            <li><a href="#eligibility" onClick={(e) => handleLinkClick(e, 'eligibility')}>Who Can Apply</a></li>
+            <li><a href="#benefits" onClick={(e) => handleLinkClick(e, 'benefits')}>Why Join</a></li>
+            <li><a href="#journey" onClick={(e) => handleLinkClick(e, 'journey')}>Program Journey</a></li>
+            <li><a href="#location" onClick={(e) => handleLinkClick(e, 'location')}>Office Location</a></li>
+            <li><a href="#faq" onClick={(e) => handleLinkClick(e, 'faq')}>FAQ</a></li>
           </ul>
         </div>
 
@@ -94,8 +101,8 @@ export default function Footer() {
               </svg>
             </a>
             <a href="https://wa.me/919591310740" target="_blank" rel="noreferrer" className="social-icon-btn" aria-label="WhatsApp">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.454L0 24zm6.59-4.846c1.6.95 3.197 1.45 4.817 1.452 5.43 0 9.85-4.42 9.854-9.85.002-2.63-1.023-5.101-2.887-6.963C16.46 1.93 13.992.905 11.36.905c-5.43 0-9.85 4.42-9.854 9.852 0 1.71.448 3.385 1.3 4.872l-1.023 3.732 3.828-1.005zm13.102-7.53c-.27-.135-1.59-.785-1.84-.875-.25-.09-.43-.135-.61.135-.18.27-.695.875-.855 1.055-.16.18-.32.2-.59.065-1.125-.565-1.92-1-2.685-2.315-.2-.345.2-.32.57-1.06.06-.115.03-.223-.015-.313-.045-.09-.43-1.035-.59-1.42-.155-.38-.325-.33-.445-.336-.115-.005-.25-.005-.385-.005-.135 0-.36.05-.55.255-.19.205-.72.705-.72 1.72s.74 2 1.02 2.375c.28.375 1.455 2.22 3.525 3.113.49.21.875.337 1.173.43.495.158.948.135 1.303.08.397-.06 1.59-.65 1.815-1.275.225-.625.225-1.16.16-1.275-.065-.115-.245-.18-.515-.315z" />
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.907h.003c4.37 0 7.929-3.558 7.93-7.929-.001-2.122-.828-4.117-2.325-5.618zm-5.607 11.045a6.561 6.561 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.618-4.945c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
               </svg>
             </a>
             <a href="https://www.facebook.com/p/Praskla-Technology-61574464046853/" target="_blank" rel="noreferrer" className="social-icon-btn" aria-label="Facebook">
@@ -103,7 +110,7 @@ export default function Footer() {
                 <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
               </svg>
             </a>
-            <a href="https://twitter.com/praskla" target="_blank" rel="noreferrer" className="social-icon-btn" aria-label="X">
+            <a href="https://x.com/prasklatech" target="_blank" rel="noreferrer" className="social-icon-btn" aria-label="X">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
               </svg>
