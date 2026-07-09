@@ -23,6 +23,7 @@ export default function ApplicationForm({ onBack }) {
     resumeBase64: '',
     resumeName: '',
     declaration: false,
+    agreeTerms: false,
   });
 
   const [errors, setErrors] = useState({});
@@ -55,7 +56,7 @@ export default function ApplicationForm({ onBack }) {
     }
 
     setErrors((prev) => ({ ...prev, resume: '' }));
-    
+
     const reader = new FileReader();
     reader.onload = () => {
       const base64String = reader.result.split(',')[1];
@@ -95,6 +96,7 @@ export default function ApplicationForm({ onBack }) {
       if (!formData.internshipDuration) stepErrors.internshipDuration = 'Please select a duration.';
       if (!formData.resumeBase64) stepErrors.resume = 'Please upload your resume in PDF format.';
       if (!formData.declaration) stepErrors.declaration = 'You must declare the information is correct.';
+      if (!formData.agreeTerms) stepErrors.agreeTerms = 'You must agree to the terms and conditions.';
     }
 
     setErrors(stepErrors);
@@ -182,7 +184,8 @@ export default function ApplicationForm({ onBack }) {
       <div className="container" style={{ maxWidth: '700px' }}>
         {/* Back Link */}
         <button className="back-link-btn" onClick={onBack}>
-          ← Back to Internship Details
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="back-btn-arrow"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          Back to Internship Details
         </button>
 
         <div className="form-card">
@@ -190,10 +193,10 @@ export default function ApplicationForm({ onBack }) {
             <span className="section-eyebrow-accent">CANDIDATE REGISTRATION</span>
             <h2 className="form-title">Student Registration Form</h2>
             <p className="form-subtitle-text">
-              Please fill in all details carefully. The information provided will be used 
+              Please fill in all details carefully. The information provided will be used
               to assess your technical skills and project placement compatibility.
             </p>
-            
+
             {/* Design-rich Stepper Progress Bar */}
             <div className="progress-steps-bar">
               <div className={`step-indicator ${currentStep >= 1 ? 'active' : ''}`}>
@@ -215,7 +218,7 @@ export default function ApplicationForm({ onBack }) {
             {currentStep === 1 && (
               <div className="form-step-content">
                 <h3 className="step-title">Personal Details</h3>
-                
+
                 {/* 1. Full Name */}
                 <div className="form-group">
                   <label htmlFor="fullName" className="required-label">Full Name</label>
@@ -262,8 +265,9 @@ export default function ApplicationForm({ onBack }) {
                 </div>
 
                 <div className="form-footer-actions">
-                  <button type="button" className="btn-brand-primary" onClick={handleNext}>
-                    Next Step →
+                  <button type="button" className="form-btn-primary" onClick={handleNext}>
+                    Next Step
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '4px' }}><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                   </button>
                 </div>
               </div>
@@ -386,11 +390,13 @@ export default function ApplicationForm({ onBack }) {
                 </div>
 
                 <div className="form-footer-actions dual">
-                  <button type="button" className="btn-brand-secondary" onClick={handlePrev}>
-                    ← Back
+                  <button type="button" className="form-btn-secondary" onClick={handlePrev}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '4px' }}><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    Back
                   </button>
-                  <button type="button" className="btn-brand-primary" onClick={handleNext}>
-                    Next Step →
+                  <button type="button" className="form-btn-primary" onClick={handleNext}>
+                    Next Step
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '4px' }}><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                   </button>
                 </div>
               </div>
@@ -486,7 +492,7 @@ export default function ApplicationForm({ onBack }) {
                 </div>
 
                 {/* Declaration */}
-                <div className="form-group declaration-group">
+                <div className="form-group declaration-group" style={{ marginBottom: '12px' }}>
                   <label className="checkbox-label">
                     <input
                       type="checkbox"
@@ -501,12 +507,30 @@ export default function ApplicationForm({ onBack }) {
                   {errors.declaration && <span className="error-text">{errors.declaration}</span>}
                 </div>
 
-                <div className="form-footer-actions dual">
-                  <button type="button" className="btn-brand-secondary" onClick={handlePrev} disabled={isSubmitting}>
-                    ← Back
+                {/* Terms and Conditions Agreement */}
+                <div className="form-group declaration-group1" style={{ marginBottom: '24px' }}>
+                  <label className="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="agreeTerms"
+                      checked={formData.agreeTerms}
+                      onChange={handleInputChange}
+                    />
+                    <span className="checkbox-text required-label">
+                      I have read all the <a href="https://drive.google.com/file/d/1IDZJyWAIVjuUTXPFipbBJ4z_qTjY5Ov9/view?usp=drive_link" target="_blank" rel="noreferrer" className="terms-link-styled" style={{ color: 'var(--color-brand)', textDecoration: 'underline', fontWeight: 'bold' }}>terms and conditions</a> attached and I agree with it.
+                    </span>
+                  </label>
+                  {errors.agreeTerms && <span className="error-text">{errors.agreeTerms}</span>}
+                </div>
+
+                <div className="form-footer-actions dual1">
+                  <button type="button" className="form-btn-secondary" onClick={handlePrev} disabled={isSubmitting}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '4px' }}><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    Back
                   </button>
-                  <button type="submit" className="btn-brand-primary" disabled={isSubmitting}>
+                  <button type="submit" className="form-btn-primary" disabled={isSubmitting}>
                     {isSubmitting ? 'Submitting Application...' : 'Submit Application'}
+                    {!isSubmitting && <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '4px' }}><polyline points="20 6 9 17 4 12"></polyline></svg>}
                   </button>
                 </div>
               </div>

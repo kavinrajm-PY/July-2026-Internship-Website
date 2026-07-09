@@ -11,6 +11,7 @@ const expectations = [
 const leaveAllowed = [
   'Internal College Examinations',
   'Semester University Examinations',
+  'Official Academic & Career Development Activities',
 ];
 
 
@@ -36,10 +37,10 @@ export default function Commitment() {
           <div className="rules-card-panel">
             <h3 className="rules-panel-heading">OFFICE EXPECTATIONS</h3>
             <p className="rules-panel-desc">
-              This opportunity is built for developers committed to significant career growth. 
+              This opportunity is built for developers committed to significant career growth.
               Because you will contribute to production client systems, regular attendance is mandatory.
             </p>
-            
+
             <ul className="rules-bullets-list">
               {expectations.map((item, i) => (
                 <li key={i} className="rules-bullet-item">
@@ -54,7 +55,7 @@ export default function Commitment() {
           <div className="rules-card-panel">
             <h3 className="rules-panel-heading">LEAVE POLICY MANUAL</h3>
             <p className="rules-panel-desc">
-              Leave requests are subject to strict corporate policy. Permissions are granted 
+              Leave requests are subject to strict corporate policy. Permissions are granted
               solely for official college examinations:
             </p>
 
@@ -70,7 +71,7 @@ export default function Commitment() {
 
 
             <div className="leave-declaration-note">
-              Applicants must obtain prior approval from their respective academic institutions before joining. 
+              Applicants must obtain prior approval from their respective academic institutions before joining.
               An official Internship Offer Letter will be provided to support your college permissions where applicable.
             </div>
           </div>

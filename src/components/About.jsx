@@ -34,7 +34,7 @@ export default function About() {
             </h3>
 
             <div className="about-image-wrapper">
-              <img src="/about-coding.png" alt="Professional Software Developer Workspace" className="about-tech-image" />
+              <img src="/about-workspace.jpg" alt="What is this Program" className="about-tech-image" />
             </div>
           </div>
 
