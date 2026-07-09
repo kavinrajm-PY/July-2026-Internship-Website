@@ -13,14 +13,7 @@ const leaveAllowed = [
   'Semester University Examinations',
 ];
 
-const leaveNotAllowed = [
-  'Placement Drives',
-  'College Events & Cultural Festivals',
-  'Academic Assignment Submissions',
-  'Academic Project Reviews & Record Works',
-  'External Workshops & Seminars',
-  'Routine Academic Tasks',
-];
+
 
 export default function Commitment() {
   const headerRef = useScrollReveal();
@@ -74,14 +67,7 @@ export default function Commitment() {
               </div>
             </div>
 
-            <div className="leave-rules-subgroup" style={{ marginTop: '20px' }}>
-              <span className="leave-status-title rejected">NOT APPROVED FOR:</span>
-              <div className="leave-status-tags-container">
-                {leaveNotAllowed.map((item, i) => (
-                  <span key={i} className="leave-status-tag rejected">✕ {item}</span>
-                ))}
-              </div>
-            </div>
+
 
             <div className="leave-declaration-note">
               Applicants must obtain prior approval from their respective academic institutions before joining. 

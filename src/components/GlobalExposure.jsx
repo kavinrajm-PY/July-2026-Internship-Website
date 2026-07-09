@@ -2,10 +2,10 @@ import React from 'react';
 import { useScrollReveal, useStaggerReveal } from '../hooks/useScrollReveal';
 
 const countries = [
-  { flag: '🇩🇪', name: 'Germany', code: 'DE / EU' },
-  { flag: '🇸🇬', name: 'Singapore', code: 'SG / APAC' },
-  { flag: '🇦🇪', name: 'Dubai', code: 'AE / ME' },
-  { flag: '🇮🇳', name: 'India', code: 'IN / SA' },
+  { codeShort: 'DE', name: 'Germany', code: 'DE / EU' },
+  { codeShort: 'SG', name: 'Singapore', code: 'SG / APAC' },
+  { codeShort: 'AE', name: 'Dubai', code: 'AE / ME' },
+  { codeShort: 'IN', name: 'India', code: 'IN / SA' },
 ];
 
 export default function GlobalExposure() {
@@ -28,7 +28,7 @@ export default function GlobalExposure() {
         <div ref={gridRef} className="global-redesign-grid">
           {countries.map((country, i) => (
             <div key={i} className="global-country-row stagger-item">
-              <span className="global-flag-icon">{country.flag}</span>
+              <span className="global-flag-badge">{country.codeShort}</span>
               <div className="global-country-details">
                 <div className="global-country-name">{country.name}</div>
                 <div className="global-country-code">{country.code}</div>

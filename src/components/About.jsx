@@ -32,6 +32,10 @@ export default function About() {
             <h3 className="about-subtitle-tech">
               Bespoke industry-oriented training to bridge the gap between college and the corporate world.
             </h3>
+
+            <div className="about-image-wrapper">
+              <img src="/about-coding.png" alt="Professional Software Developer Workspace" className="about-tech-image" />
+            </div>
           </div>
 
           {/* Right Column: Detailed Explanation */}

@@ -16,7 +16,9 @@ export default function OfficeLocation() {
           
           <div className="hq-details-card">
             <div className="hq-card-top">
-              <span className="hq-marker-icon">📍</span>
+              <span className="hq-marker-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="hq-marker-svg"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </span>
               <div>
                 <h3 className="hq-company-title">Praskla Technology</h3>
                 <p className="hq-address-line">
